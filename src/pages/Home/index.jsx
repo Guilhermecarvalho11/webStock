@@ -13,17 +13,16 @@ export function Home() {
 
       <main>
         <Feature title="Produto" icon={FiTag} to="/product" />
+
+        {[USER_ROLE.ADMIN].includes(user.role) && (
+          <Feature title="Fornecedores" icon={FiTruck} to="/suppliers" />
+        )}
         {[USER_ROLE.ADMIN, USER_ROLE.SALE].includes(user.role) && (
-          <>
-            {USER_ROLE === USER_ROLE.ADMIN && (
-              <Feature title="Fornecedores" icon={FiTruck} to="/suppliers" />
-            )}
-            <Feature
-              title="Relatório de vendas"
-              icon={FiShoppingCart}
-              to="/sales-report"
-            />
-          </>
+          <Feature
+            title="Relatório de vendas"
+            icon={FiShoppingCart}
+            to="/sales-report"
+          />
         )}
       </main>
     </Container>
